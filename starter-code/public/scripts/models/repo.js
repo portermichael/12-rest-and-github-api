@@ -16,8 +16,11 @@ var app = app || {};
       method:'GET',
       headers: {Authorization: `token ${myGithubToken}`}
     })
-      .then(data => data.forEach(repo => repos.all.push(repo)));
-    callback();
+      .then(function(data) {
+        repos.all = data;
+        callback();
+      }
+    )
   };
 
   // REVIEW: Model method that filters the full collection for repos with a particular attribute.
